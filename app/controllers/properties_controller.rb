@@ -23,6 +23,7 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    3.times { @property.stations.build }
   end
 
   def update
