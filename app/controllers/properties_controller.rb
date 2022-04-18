@@ -1,10 +1,11 @@
 class PropertiesController < ApplicationController
 
   def index
-    @properties = Property.all
+    @property = Property.all
   end
 
   def new
-    @properties = Property.new
+    @property = Property.new
+    2.times { @property.stations.build }
   end
 end
