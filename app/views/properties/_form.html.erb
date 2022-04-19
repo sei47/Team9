@@ -16,7 +16,7 @@
 
   <%= form.fields_for :stations do |stations_form| %>
 
-    <h2>最寄り駅<%= @property.stations.id %></h2>
+    <h2>最寄り駅<%= stations_form.index + 1 %></h2>
     <p><%= stations_form.label :路線名%></p>
     <p><%= stations_form.text_field :root_name %></p>
 

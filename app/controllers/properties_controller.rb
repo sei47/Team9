@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property = Property.new(property_param)
+    @property = Property.new(property_params)
     if @property.save
       redirect_to properties_path, notice: "登録しました"
     else
@@ -20,6 +20,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @stations = @property.stations
   end
 
   def edit
@@ -27,7 +28,7 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    if @property.update(property_param)
+    if @property.update(property_params)
       redirect_to properties_path, notice:"編集しました"
     else
       render :edit
@@ -41,13 +42,13 @@ class PropertiesController < ApplicationController
 
   private
 
-  def property_param
-    params.require(:property).permit %i(name
-                                        price
-                                        address
-                                        age
-                                        remarks
-                                        addresses_attributes: [root_name station_name time])
+  def property_params
+    params.require(:property).permit(:name,
+                                      :price,
+                                      :address,
+                                      :age,
+                                      :remarks,
+                                      stations_attributes: %i[ root_name station_name time id ])
   end
 
   def set_property
