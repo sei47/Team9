@@ -6,10 +6,10 @@
 <p>備考:<%= @property.remarks %></p>
 
 <% @stations.each do |station| %>
-  <h2>最寄り駅<%= station.index + 1 %></h2>
-  <p>路線名<%= station.root_name %></p>
-  <p>駅名<%= station.station_name %></p>
-  <p>徒歩分数<%= station.time %>分</p>
+  <h2>最寄り駅<%= station.id %></h2>
+  <p>路線名:<%= station.root_name %></p>
+  <p>駅名:<%= station.station_name %></p>
+  <p>徒歩分数:<%= station.time %>分</p>
 <% end %>
 
-<p><%= link_to '戻る', properties_path %>|<%= link_to '編集', edit_property_path(property) %></p>
+<p><%= link_to '戻る', properties_path %>|<%= link_to '編集', edit_property_path(@property) %></p>
